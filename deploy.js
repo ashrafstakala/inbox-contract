@@ -22,3 +22,4 @@ const deploy = async () => {
   console.log('Contract deployed to', result.options.address); // to identify where the instance of our contract was deployed
   provider.engine.stop(); // to prevent deployment from hanging
 };
+deploy();
