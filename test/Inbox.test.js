@@ -21,30 +21,9 @@ describe('Inbox', () => {
   it('deploys a contract', () => {
     assert.ok(inbox.options.address);
   });
+
+  it('has a default message', async () => {
+    const message = await inbox.methods.message().call();
+    assert.equal(message, 'Hi there!');
+  });
 });
-
-////// Demo test
-// class Car {
-//   park() {
-//     return 'stopped';
-//   }
-//   drive() {
-//     return 'vroom';
-//   }
-// }
-
-// let car;
-
-// beforeEach(() => {
-//   car = new Car();
-// });
-
-// describe('Car', () => {
-//   it('can park', () => {
-//     assert.equal(car.park(), 'stopped');
-//   });
-
-//   it('can drive', () => {
-//     assert.equal(car.drive(), 'vroom');
-//   });
-// });
