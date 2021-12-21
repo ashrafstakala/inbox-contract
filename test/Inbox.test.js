@@ -12,14 +12,14 @@ beforeEach(async () => {
   accounts = await web3.eth.getAccounts(); // Etherium module of Web3 library
 
   // Use one of those accounts to deploy the contract
-  inbox = await new web3.eth.Contract(JSON.parse(interface))
-    .deploy({ data: bytecode, arguments: ['Hi there!'] })
-    .send({ from: accounts[0], gas: '1000000' });
+  inbox = await new web3.eth.Contract(JSON.parse(interface)) // tells web3 what methods the contract has and JSON parses the ABI to use as objects
+    .deploy({ data: bytecode, arguments: ['Hi there!'] }) // defines the object, doesn't actually deploy
+    .send({ from: accounts[0], gas: '1000000' }); // triggers the deploy to network
 });
 
 describe('Inbox', () => {
   it('deploys a contract', () => {
-    console.log(inbox);
+    assert.ok(inbox.options.address);
   });
 });
 
